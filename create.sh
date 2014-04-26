@@ -13,6 +13,7 @@ ARCH="noarch"
 FILE="${PKG_NAME}-${PKG_VERSION}-${TODAY}.${ITER}.${ARCH}.rpm"
 echo "FILE=${FILE}"
 FILE_PATH="${REPO_PATH}/${ARCH}/${FILE}"
+mkdir -p "${REPO_PATH}/${ARCH}"
 echo "FILE_PATH=${FILE_PATH}"
 fpm -s dir -t rpm -a ${ARCH} -p ${FILE_PATH} -n ${PKG_NAME} -v ${PKG_VERSION} --iteration ${TODAY}.${ITER} \
     -m 'Christian Kniep <christian@qnib.org>' \
