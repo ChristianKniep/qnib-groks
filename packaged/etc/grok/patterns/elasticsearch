@@ -3,3 +3,11 @@ INT (?:[+-]?(?:[0-9]+))
 
 # shards [5]/[1]
 ES_SHARDS shards \[%{INT:es_shards_exp}\]/\[%{INT:es_shards_got}\]
+
+# 2014-05-04 14:10:02,301
+ES_TIMESTAMP_ISO8601 %{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}:%{SECOND}
+
+ES_VERSION %{INT:major_ver}\.%{INT:minor_ver}\.%{INT:patch_ver}
+
+#[2014-05-04 14:10:02,301][INFO ][node ] [Green Goblin] version[1.0.3], pid[36], build[61bfb72/2014-04-16T14:43:11Z]
+ES_LOG \[%{ES_TIMESTAMP_ISO8601}\]\[%{WORD:log_level}\s*\]\[%{WORD:node_name}\s*\]\s*\[%{DATA:cluster_name}\s*\] version\[%{ES_VERSION}\], pid\[%{INT:pid}\], build\[%{DATA:build}\]

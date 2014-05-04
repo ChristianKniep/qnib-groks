@@ -3,3 +3,18 @@ comp_line=%{ES_SHARDS}
 input=shards [3]/[3]
 result={"ES_SHARDS":["shards [3]/[3]"], "INT:es_shards_exp":["3"], "INT:es_shards_got":["3"]}
 
+[es_timestamp]
+comp_line=%{ES_TIMESTAMP_ISO8601}
+input=2014-05-04 14:10:02,301
+result={"ES_TIMESTAMP_ISO8601":["2014-05-04 14:10:02,301"], "HOUR":["14"], "MINUTE":["10"], "MONTHDAY":["04"], "MONTHNUM":["05"], "SECOND":["02,301"], "YEAR":["2014"]}
+
+[es_vesion]
+comp_line=%{ES_VERSION}
+input=1.0.3
+result={"ES_VERSION":["1.0.3"], "INT:major_ver":["1"], "INT:minor_ver":["0"], "INT:patch_ver":["3"]}
+
+[es_log]
+comp_line=%{ES_LOG}
+input=[2014-05-04 14:10:02,301][INFO ][node ] [Green Goblin] version[1.0.3], pid[36], build[61bfb72/2014-04-16T14:43:11Z]
+result={"DATA:build":["61bfb72/2014-04-16T14:43:11Z"], "DATA:cluster_name":["Green Goblin"], "ES_LOG":["[2014-05-04 14:10:02,301][INFO ][node ] [Green Goblin] version[1.0.3], pid[36], build[61bfb72/2014-04-16T14:43:11Z]"], "ES_TIMESTAMP_ISO8601":["2014-05-04 14:10:02,301"], "ES_VERSION":["1.0.3"], "HOUR":["14"], "INT:major_ver":["1"], "INT:minor_ver":["0"], "INT:patch_ver":["3"], "INT:pid":["36"], "MINUTE":["10"], "MONTHDAY":["04"], "MONTHNUM":["05"], "SECOND":["02,301"], "WORD:log_level":["INFO"], "WORD:node_name":["node"], "YEAR":["2014"]}
+
