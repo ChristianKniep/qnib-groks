@@ -1,0 +1,29 @@
+[sd_prog_simple]
+comp_line=%{SD_PROG:val1}
+input=setup
+result={"SD_PROG:val1":["setup"]}
+
+[sd_prog_carbon]
+comp_line=%{SD_PROG:val1}
+input=carbon-cache
+result={"SD_PROG:val1":["carbon-cache"]}
+
+[slurm_level]
+comp_line=%{SLURM_LEVEL:val1}
+input=fatal
+result={"SLURM_LEVEL:val1":["fatal"]}
+
+[slurm_level_sched]
+comp_line=%{SCTLD_MSG}
+input=slurmctld: sched: Backfill scheduler plugin loaded
+result={"SLURM_LEVEL:slurm_level":["sched"], "SCTLD_MSG":["slurmctld: sched: Backfill scheduler plugin loaded"], "GREEDYDATA:sd_msg":["Backfill scheduler plugin loaded"]}
+
+[slurm_level_fatal]
+comp_line=%{SCTLD_MSG}
+input=slurmctld: fatal: slurm_set_addr failure on compute0
+result={"SLURM_LEVEL:slurm_level":["fatal"], "SCTLD_MSG":["slurmctld: fatal: slurm_set_addr failure on compute0"], "GREEDYDATA:sd_msg":["slurm_set_addr failure on compute0"]}
+
+[slurm_level_error]
+comp_line=%{SCTLD_MSG}
+input=slurmctld: error: Configured MailProg is invalid
+result={"SLURM_LEVEL:slurm_level":["error"], "SCTLD_MSG":["slurmctld: error: Configured MailProg is invalid"], "GREEDYDATA:sd_msg":["Configured MailProg is invalid"]}
